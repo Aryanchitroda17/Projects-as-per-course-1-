@@ -1,0 +1,26 @@
+from scipy.stats import norm
+import numpy as np
+
+def black_scholes(S, K, T, r, sigma, option_type='call'):
+    d1 = (np.log(S / K) + (r + 0.5 * sigma**2) * T) / (sigma * np.sqrt(T))
+    d2 = d1 - sigma * np.sqrt(T)
+
+    if option_type == 'call':
+        price = S * norm.cdf(d1) - K * np.exp(-r * T) * norm.cdf(d2)
+    else:  # put
+        price = K * np.exp(-r * T) * norm.cdf(-d2) - S * norm.cdf(-d1)
+    
+    return price
+
+# Ensure scalar inputs
+import pandas as pd
+S = S0.item() if isinstance(S0, pd.Series) else S0
+sigma = std.item() if isinstance(std, pd.Series) else std
+
+# Black-Scholes call and put prices
+bs_call = black_scholes(S, K, T, r, sigma, option_type='call')
+bs_put = black_scholes(S, K, T, r, sigma, option_type='put')
+
+# Print results
+print(f"Black-Scholes Call: {bs_call:.2f}")
+print(f"Black-Scholes Put : {bs_put:.2f}")
