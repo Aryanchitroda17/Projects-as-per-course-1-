@@ -66,12 +66,7 @@ This project uses **Monte Carlo simulation with Geometric Brownian Motion (GBM)*
 - Run backtesting on different stocks & expiries
 - Build a Streamlit app or Jupyter dashboard
 
----
-
-## 🧾 Output Snapshot
-
-![Sample Chart](insert/path/to/chart.png)
-
+  
 ---
 
 ## 👨‍💻 Author
